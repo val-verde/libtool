@@ -5129,7 +5129,7 @@ _LT_EOF
       _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]][[ ]]/s/.*[[ ]]\([[^ ]]*\)/\1 DATA/;s/^.*[[ ]]__nm__\([[^ ]]*\)[[ ]][[^ ]]*/\1 DATA/;/^I[[ ]]/d;/^[[AITW]][[ ]]/s/.* //'\'' | sort | uniq > $export_symbols'
       _LT_TAGVAR(exclude_expsyms, $1)=['[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname']
 
-      if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
+      if $LD --help 2>&1 | $GREP 'linker' > /dev/null; then
         _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
 	# If the export-symbols file already is a .def file, use it as
 	# is; otherwise, prepend EXPORTS...
@@ -5626,13 +5626,13 @@ _LT_EOF
 	# Assume MSVC and ICC wrapper
 	_LT_TAGVAR(hardcode_libdir_flag_spec, $1)=' '
 	_LT_TAGVAR(allow_undefined_flag, $1)=unsupported
-	# Tell ltmain to make .lib files, not .a files.
-	libext=lib
+	# Tell ltmain to make .dll.a files, not .a files.
+	libext=dll.a
 	# Tell ltmain to make .dll files, not .so files.
 	shrext_cmds=.dll
 	# FIXME: Setting linknames here is a bad hack.
 	_LT_TAGVAR(archive_cmds, $1)='$CC -o $lib $libobjs $compiler_flags `func_echo_all "$deplibs" | $SED '\''s/ -lc$//'\''` -link -dll~linknames='
-	# The linker will automatically build a .lib file if we build a DLL.
+	# The linker will automatically build a .dll.a file if we build a DLL.
 	_LT_TAGVAR(old_archive_from_new_cmds, $1)='true'
 	# FIXME: Should let the user specify the lib program.
 	_LT_TAGVAR(old_archive_cmds, $1)='lib -OUT:$oldlib$oldobjs$old_deplibs'
@@ -6705,7 +6705,7 @@ if test yes != "$_lt_caught_CXX_error"; then
 	  _LT_TAGVAR(always_export_symbols, $1)=no
 	  _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
 
-	  if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
+	  if $LD --help 2>&1 | $GREP 'linker' > /dev/null; then
 	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
 	    # If the export-symbols file already is a .def file, use it as
 	    # is; otherwise, prepend EXPORTS...
