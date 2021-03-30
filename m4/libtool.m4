@@ -5130,7 +5130,7 @@ _LT_EOF
       _LT_TAGVAR(exclude_expsyms, $1)=['[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname']
 
       if $LD --help 2>&1 | $GREP 'linker' > /dev/null; then
-        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+        _LT_TAGVAR(archive_cmds, $1)='$CXXLD -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
 	# If the export-symbols file already is a .def file, use it as
 	# is; otherwise, prepend EXPORTS...
 	_LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
@@ -5139,7 +5139,7 @@ _LT_EOF
           echo EXPORTS > $output_objdir/$soname.def;
           cat $export_symbols >> $output_objdir/$soname.def;
         fi~
-        $CC -shared $output_objdir/$soname.def $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+        $CXXLD -shared $output_objdir/$soname.def $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
       else
 	_LT_TAGVAR(ld_shlibs, $1)=no
       fi
@@ -6706,7 +6706,7 @@ if test yes != "$_lt_caught_CXX_error"; then
 	  _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
 
 	  if $LD --help 2>&1 | $GREP 'linker' > /dev/null; then
-	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+	    _LT_TAGVAR(archive_cmds, $1)='$CXXLD -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
 	    # If the export-symbols file already is a .def file, use it as
 	    # is; otherwise, prepend EXPORTS...
 	    _LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
@@ -6715,7 +6715,7 @@ if test yes != "$_lt_caught_CXX_error"; then
               echo EXPORTS > $output_objdir/$soname.def;
               cat $export_symbols >> $output_objdir/$soname.def;
             fi~
-            $CC -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
+            $CXXLD -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
 	  else
 	    _LT_TAGVAR(ld_shlibs, $1)=no
 	  fi
