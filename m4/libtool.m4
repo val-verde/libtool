@@ -979,7 +979,7 @@ $RM -r conftest*
 # -------------------------
 m4_defun_once([_LT_REQUIRED_DARWIN_CHECKS],[
   case $host_os in
-    rhapsody* | darwin*)
+    rhapsody* | darwin* | ios* | macos*)
     AC_CHECK_TOOL([DSYMUTIL], [dsymutil], [:])
     AC_CHECK_TOOL([NMEDIT], [nmedit], [:])
     AC_CHECK_TOOL([LIPO], [lipo], [:])
@@ -1069,7 +1069,7 @@ _LT_EOF
       _lt_dar_allow_undefined='$wl-undefined ${wl}suppress' ;;
     darwin1.*)
       _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
-    darwin*)
+    ios* | macos* | darwin*)
       case $MACOSX_DEPLOYMENT_TARGET,$host in
         10.[[012]],*|,*powerpc*-darwin[[5-8]]*)
           _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
@@ -1568,7 +1568,7 @@ if test -n "$RANLIB"; then
 fi
 
 case $host_os in
-  darwin*)
+  darwin* | ios* | macos*)
     lock_old_archive_extraction=yes ;;
   *)
     lock_old_archive_extraction=no ;;
@@ -1725,7 +1725,7 @@ AC_CACHE_VAL([lt_cv_sys_max_cmd_len], [dnl
     lt_cv_sys_max_cmd_len=8192;
     ;;
 
-  bitrig* | darwin* | dragonfly* | freebsd* | midnightbsd* | netbsd* | openbsd*)
+  bitrig* | darwin* | ios* | macos* | dragonfly* | freebsd* | midnightbsd* | netbsd* | openbsd*)
     # This has been around since 386BSD, at least.  Likely further.
     if test -x /sbin/sysctl; then
       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
@@ -1956,7 +1956,7 @@ else
     lt_cv_dlopen_libs=
     ;;
 
-  darwin*)
+  darwin* | ios* | macos*)
     # if libdl is installed we need to link against it
     AC_CHECK_LIB([dl], [dlopen],
 		[lt_cv_dlopen=dlopen lt_cv_dlopen_libs=-ldl],[
@@ -2227,7 +2227,7 @@ else
     AC_MSG_RESULT([yes])
   else
     case $host_os in
-    darwin*)
+    darwin* | ios* | macos*)
       # FIXME - insert some real tests, host_os isn't really good enough
       striplib="$STRIP -x"
       old_striplib="$STRIP -S"
@@ -2310,7 +2310,7 @@ m4_if([$1],
 	[], [
 if test yes = "$GCC"; then
   case $host_os in
-    darwin*) lt_awk_arg='/^libraries:/,/LR/' ;;
+    darwin* | ios* | macos*) lt_awk_arg='/^libraries:/,/LR/' ;;
     *) lt_awk_arg='/^libraries:/' ;;
   esac
   case $host_os in
@@ -2651,7 +2651,7 @@ m4_if([$1], [],[
   shlibpath_var=PATH
   ;;
 
-darwin* | rhapsody*)
+darwin* | rhapsody* | ios* | macos*)
   dynamic_linker="$host_os dyld"
   version_type=darwin
   need_lib_prefix=no
@@ -3390,7 +3390,7 @@ case $host_os in
       reload_cmds=false
     fi
     ;;
-  darwin*)
+  darwin* | ios* | macos*)
     if test yes = "$GCC"; then
       reload_cmds='$LTCC $LTCFLAGS -nostdlib $wl-r -o $output$reload_objs'
     else
@@ -3504,7 +3504,7 @@ cegcc*)
   lt_cv_file_magic_cmd='$OBJDUMP -f'
   ;;
 
-darwin* | rhapsody*)
+darwin* | rhapsody* | ios* | macos*)
   lt_cv_deplibs_check_method=pass_all
   ;;
 
@@ -3861,7 +3861,7 @@ AC_DEFUN([LT_LIB_M],
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 LIBM=
 case $host in
-*-*-beos* | *-*-cegcc* | *-*-cygwin* | *-*-haiku* | *-*-pw32* | *-*-darwin*)
+*-*-beos* | *-*-cegcc* | *-*-cygwin* | *-*-haiku* | *-*-pw32* | *-*-darwin* | *-*-ios* | *-*-macos*)
   # These system don't have libm, or don't need it
   ;;
 *-ncr-sysv4.3*)
@@ -4255,7 +4255,7 @@ m4_if([$1], [CXX], [
 	;;
       esac
       ;;
-    darwin* | rhapsody*)
+    darwin* | rhapsody* | ios* | macos*)
       # PIC is the default on this platform
       # Common symbols not allowed in MH_DYLIB files
       _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
@@ -4580,7 +4580,7 @@ m4_if([$1], [CXX], [
       esac
       ;;
 
-    darwin* | rhapsody*)
+    darwin* | rhapsody* | ios* | macos*)
       # PIC is the default on this platform
       # Common symbols not allowed in MH_DYLIB files
       _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
@@ -4656,7 +4656,7 @@ m4_if([$1], [CXX], [
       fi
       ;;
 
-    darwin* | rhapsody*)
+    darwin* | rhapsody* | ios* | macos*)
       # PIC is the default on this platform
       # Common symbols not allowed in MH_DYLIB files
       _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
@@ -5342,6 +5342,10 @@ _LT_EOF
       _LT_TAGVAR(hardcode_shlibpath_var, $1)=no
       ;;
 
+    darwin* | rhapsody* | ios* | macos*)
+      _LT_DARWIN_LINKER_FEATURES($1)
+      ;;
+
     *)
       if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
 	_LT_TAGVAR(archive_cmds, $1)='$CC -shared $pic_flag $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
@@ -5641,7 +5645,7 @@ _LT_EOF
       esac
       ;;
 
-    darwin* | rhapsody*)
+    darwin* | rhapsody* | ios* | macos*)
       _LT_DARWIN_LINKER_FEATURES($1)
       ;;
 
@@ -6722,7 +6726,7 @@ if test yes != "$_lt_caught_CXX_error"; then
 	  ;;
 	esac
 	;;
-      darwin* | rhapsody*)
+      darwin* | rhapsody* | ios* | macos*)
         _LT_DARWIN_LINKER_FEATURES($1)
 	;;
 
