@@ -4804,6 +4804,12 @@ func_mode_link ()
 	  prev=
 	  continue
 	  ;;
+	Xclang)
+	  # Clang does not use LLVM to link, so we can simply discard any
+	  # '-mllvm $arg' options when doing the link step.
+	  prev=
+	  continue
+	  ;;
 	mllvm)
 	  # Clang does not use LLVM to link, so we can simply discard any
 	  # '-mllvm $arg' options when doing the link step.
@@ -5152,6 +5158,11 @@ func_mode_link ()
 	func_append deplibs " $arg"
 	continue
 	;;
+
+      -Xclang)
+       prev=Xclang
+       continue
+       ;;
 
       -mllvm)
 	prev=mllvm
